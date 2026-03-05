@@ -1,0 +1,36 @@
+# Secrets — never commit these
+.mcp.json
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Node
+node_modules/
+npm-debug.log*
+.npm
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# Claude local config
+.claude/settings.local.json
+.claude/claude_mcp_config.json
+.claude/skills/
+
+# Local agent skills (not tracked)
+.agent/

@@ -1,0 +1,51 @@
+{
+  "project": {
+    "name": "",
+    "client": "",
+    "industry": "",
+    "location": "",
+    "tone": "",
+    "brand_colors": [],
+    "pages": [],
+    "features": {
+      "contact_form": false,
+      "booking": false,
+      "cms": false,
+      "ecommerce": false,
+      "gallery": false
+    },
+    "figma_provided": false,
+    "assets_provided": false
+  },
+  "phase": "idle",
+  "agents": {
+    "superpowers": "pending",
+    "superdesign": "pending",
+    "stitch": "pending",
+    "uiux_pro_max": "pending",
+    "21st_dev": "pending",
+    "frontend": "pending",
+    "recraft": "pending",
+    "backend": "pending",
+    "qa": "pending",
+    "deploy": "pending"
+  },
+  "outputs": {
+    "spec_path": "",
+    "tests_path": "",
+    "design_system_path": "",
+    "design_md_path": "",
+    "component_manifest_path": "",
+    "asset_manifest_path": "",
+    "qa_report_path": "",
+    "deploy_url": ""
+  },
+  "env_vars": [],
+  "qa_report": {
+    "pass": [],
+    "fail": [],
+    "lighthouse": 0,
+    "console_errors": []
+  },
+  "context_checkpoint": ""
+}
