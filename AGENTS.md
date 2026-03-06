@@ -36,6 +36,7 @@ If you find yourself writing a Supabase schema, stop. Dispatch the Backend Agent
   5. Re-route failures with specific instructions — never silently skip a failing gate.
   6. Write state to project-state.json before any context compaction event.
   7. Deploy only after QA Agent returns a full pass.
+  8. If the client brief has any ambiguity before kickoff, ask ONE clarifying question and wait for the answer. Never assume or fill gaps.
 </axioms>
 ```
 
@@ -107,21 +108,25 @@ This is the single source of truth. Keep it lean. Pass paths, not content.
 When a new project starts, run this sequence before dispatching any agent:
 
 ```
-STEP 1 — Populate project-state.json from the client brief.
+STEP 1 — Check the brief for ambiguity before doing anything else.
+          Missing brand colors? Unclear page list? No primary CTA defined?
+          Ask ONE clarifying question. Wait for the answer. Then proceed.
+
+STEP 2 — Populate project-state.json from the client brief.
           Fill every field. Set phase to "kickoff".
 
-STEP 2 — Determine dispatch path:
+STEP 3 — Determine dispatch path:
           IF figma_provided = true  → PATH B (Figma direct)
           IF figma_provided = false → PATH A (Full design generation)
 
-STEP 3 — Determine backend scope:
+STEP 4 — Determine backend scope:
           IF contact_form OR booking OR cms OR ecommerce = true → Backend Agent needed
           ELSE → skip Backend Agent entirely
 
-STEP 4 — Dispatch Superpowers Agent first. Always. No exceptions.
+STEP 5 — Dispatch Superpowers Agent first. Always. No exceptions.
           Nothing builds until the spec and tests.json exist.
 
-STEP 5 — Follow the dispatch path for this project type.
+STEP 6 — Follow the dispatch path for this project type.
 ```
 
 ---
@@ -191,12 +196,15 @@ Feed the full client brief from `project-state.json`. This agent must complete b
 </input>
 
 <instructions>
-  1. Run Superpowers Brainstorming: ask clarifying questions about the brief, produce signed-off design document.
+  1. Before writing anything: does the brief have any ambiguity? If yes, surface ONE specific question to the Orchestrator and wait for the answer before proceeding.
+  2. Run Superpowers Brainstorming: ask clarifying questions about the brief, produce signed-off design document.
   2. Run Superpowers Writing Plans: break the project into 2–5 minute tasks with exact file paths and verification steps.
   3. Run Superpowers TDD: generate tests.json BEFORE any implementation. RED–GREEN–REFACTOR enforced.
   4. Run Superpowers Git Worktrees: create isolated branch, verify clean test baseline.
   5. Write spec to superpowers-spec.md. Write tests to tests.json.
-  6. Update project-state.json: outputs.spec_path, outputs.tests_path.
+  6. Track todo items as you work: mark each task pending → in_progress → completed.
+     If a requirement is unclear at any point, report to Orchestrator immediately. Do not guess.
+  7. Update project-state.json: outputs.spec_path, outputs.tests_path.
 </instructions>
 
 <quality_gates>
@@ -329,8 +337,9 @@ Receives component requirements from the spec. Retrieves from 21st.dev library. 
 <input>Component requirements: [from superpowers-spec.md] | Sections needed: [hero, nav, CTA, cards, testimonials, pricing, etc.]</input>
 <instructions>
   1. For each component type needed, use /ui command: /ui [natural language description]
+     Run all independent /ui calls in parallel — never one at a time.
   2. Components come from 21st.dev library only — TypeScript, React, fully customizable.
-  3. Use SVGL integration for any brand logos or professional SVG assets.
+  3. If uncertain about a component's API, props, or usage: search 21st.dev docs before implementing. Never guess.
   4. Install components directly into project structure.
   5. Return component manifest: file paths + customization notes for Frontend Agent.
   6. Write manifest to component-manifest.json. Update project-state.json outputs.component_manifest_path.
@@ -381,17 +390,21 @@ This is where product quality is won or lost. Opus at high effort. Read every in
 </inputs>
 
 <instructions>
-  1. Run parallel reads: spec, tests.json, design-system/MASTER.md, component-manifest.json simultaneously. Do not start building until all four are loaded.
+  1. Run parallel reads: spec, tests.json, design-system/MASTER.md, component-manifest.json simultaneously.
+     If any of these are already in context, skip the read — do not re-fetch what you already have.
+     Do not start building until all four are loaded.
   2. For each page, read design-system/pages/[page].md for overrides.
   3. Follow TDD: implement tests.json RED tests first. Write code to pass them. Refactor.
   4. Build each page per the spec. For animated sections: Magic UI MCP for hero, CTAs, cards, transitions.
   5. Use 21st.dev components from the manifest. Do not rebuild what the library provides.
+     If a component behaves unexpectedly or its API is unclear, search 21st.dev docs before debugging.
   6. If figma_provided = true: convert Figma specs to Next.js + Tailwind via Figma MCP for any remaining design-to-code work.
   7. Generate all pages mobile-first. Test 375px, 768px, 1280px breakpoints during build.
   8. Run OWASP skill on completed frontend code. Fix any flagged issues before reporting done.
   9. Run Varlock: confirm no API keys, tokens, or secrets appear anywhere in frontend code.
   10. Self-review against quality_gates. Report complete only when all gates pass.
-</instructions>
+      Track todo items throughout: mark each page/feature pending → in_progress → completed.
+      If a test seems wrong or a requirement is unclear: stop and report to Orchestrator. Do not work around it.</instructions>
 
 <constraints>
   Mobile-first. No desktop-first shortcuts.
@@ -406,6 +419,7 @@ This is where product quality is won or lost. Opus at high effort. Read every in
   Never make claims about the codebase without reading the relevant files first.
   Run parallel file reads before starting any page build.
   Never guess at component APIs — use the manifest.
+  All code locations must be referenced as path/to/File.tsx:LINE_NUMBER. Never say "the hero component" — always the exact file and line.
 </anti_hallucination>
 
 <quality_gates>
@@ -501,11 +515,13 @@ Skip entirely if no backend features required. If dispatched, runs after Fronten
   9. Document all env vars in project-state.json env_vars array.
   10. Run OWASP skill: review all API routes and auth logic.
   11. Run Varlock: confirm all Supabase keys, Resend API keys, Cal.com tokens are in env vars only.
-</instructions>
+  12. Track todo items as you work: mark each endpoint pending → in_progress → completed.
+      If a test is wrong or a requirement is ambiguous: report to Orchestrator immediately. Do not guess.</instructions>
 
 <constraints>
   YAGNI: build only what the spec explicitly defines.
   No error handling for edge cases the spec does not cover.
+  Never edit package.json manually — always use npm install / npm uninstall.
   If a test is wrong or a requirement is ambiguous: report to Orchestrator. Do not guess.
 </constraints>
 ```
@@ -541,6 +557,7 @@ Full agentic browser QA. Uses multi-tab parallel testing where pages are indepen
   4. If booking enabled: complete full booking flow end-to-end.
   5. Resize to 375px, 768px, and 1280px on every page. Flag any layout breaks.
   6. Read browser console on every page. Zero errors = pass.
+     Read it directly — never infer, assume, or guess what errors might exist.
   7. Run Lighthouse. Flag if score is below 90.
   8. Run Web Design Guidelines skill: validate built site against Vercel's interface standards.
   9. If failures found: run Systematic Debugging skill to produce structured bug report before sending to Orchestrator.
