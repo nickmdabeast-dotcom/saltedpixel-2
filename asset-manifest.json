@@ -1,0 +1,34 @@
+{
+  "generated_by": "recraft-agent",
+  "generated_at": "2026-03-07",
+  "model": "recraftv3",
+  "assets": {
+    "hero": [
+      { "file": "/assets/hero/hero-main.jpg", "size": "1820x1024", "desc": "Homepage split-panel hero — premium residential roof, golden hour" },
+      { "file": "/assets/hero/hero-storm.jpg", "size": "1820x1024", "desc": "Storm damage hero — fallen tree, dramatic sky" },
+      { "file": "/assets/hero/hero-replacement.jpg", "size": "1820x1024", "desc": "Roof replacement hero — crew installing shingles" },
+      { "file": "/assets/hero/hero-repair.jpg", "size": "1820x1024", "desc": "Roof repair hero — close-up shingle replacement" },
+      { "file": "/assets/hero/hero-commercial.jpg", "size": "1820x1024", "desc": "Commercial roofing hero — flat roof city skyline" },
+      { "file": "/assets/hero/hero-about.jpg", "size": "1820x1024", "desc": "About hero — team in front of completed home" }
+    ],
+    "about": [
+      { "file": "/assets/about/founder.jpg", "size": "1365x1024", "desc": "Founder portrait — environmental, golden hour" }
+    ],
+    "services": [
+      { "file": "/assets/services/replacement-thumb.jpg", "size": "1024x1024", "desc": "Replacement thumbnail — dark shingle close-up" },
+      { "file": "/assets/services/repair-thumb.jpg", "size": "1024x1024", "desc": "Repair thumbnail — inspector with clipboard" }
+    ],
+    "gallery": [
+      { "file": "/assets/gallery/storm-01.jpg", "size": "1365x1024", "category": "storm", "desc": "Hail damage close-up documentation" },
+      { "file": "/assets/gallery/storm-02.jpg", "size": "1365x1024", "category": "storm", "desc": "Before/after split — storm damage vs restored" },
+      { "file": "/assets/gallery/storm-03.jpg", "size": "1365x1024", "category": "storm", "desc": "Roof restored after Round Rock storm" },
+      { "file": "/assets/gallery/replace-01.jpg", "size": "1365x1024", "category": "replacement", "desc": "Aerial drone shot — completed dark charcoal roof" },
+      { "file": "/assets/gallery/replace-02.jpg", "size": "1365x1024", "category": "replacement", "desc": "Cedar Park luxury home — tan shingles" },
+      { "file": "/assets/gallery/replace-03.jpg", "size": "1365x1024", "category": "replacement", "desc": "Roofer laying shingles mid-job" },
+      { "file": "/assets/gallery/repair-01.jpg", "size": "1365x1024", "category": "repair", "desc": "Ice and water shield valley repair" },
+      { "file": "/assets/gallery/repair-02.jpg", "size": "1365x1024", "category": "repair", "desc": "Chimney flashing detail — after repair" },
+      { "file": "/assets/gallery/commercial-01.jpg", "size": "1365x1024", "category": "commercial", "desc": "Commercial warehouse — completed TPO flat roof" },
+      { "file": "/assets/gallery/commercial-02.jpg", "size": "1365x1024", "category": "commercial", "desc": "Strip mall EPDM roofing crew in progress" }
+    ]
+  }
+}

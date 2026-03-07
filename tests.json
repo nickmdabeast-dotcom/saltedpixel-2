@@ -1,0 +1,71 @@
+{
+  "version": "1.0",
+  "project": "ironclad-roofing",
+  "last_updated": "2026-03-07",
+  "suites": [
+    {
+      "name": "Build",
+      "tests": [
+        { "id": "build-001", "desc": "npm run build exits 0", "status": "GREEN", "verified_at": "2026-03-07" },
+        { "id": "build-002", "desc": "Zero TypeScript errors", "status": "GREEN", "verified_at": "2026-03-07" },
+        { "id": "build-003", "desc": "Zero ESLint warnings", "status": "GREEN", "verified_at": "2026-03-07" },
+        { "id": "build-004", "desc": "21 pages generated", "status": "GREEN", "verified_at": "2026-03-07" }
+      ]
+    },
+    {
+      "name": "API Routes",
+      "tests": [
+        { "id": "api-001", "desc": "POST /api/contact returns 200 with valid payload", "status": "GREEN", "verified_at": "2026-03-07" },
+        { "id": "api-002", "desc": "POST /api/contact returns 400 with missing name", "status": "GREEN", "verified_at": "2026-03-07" },
+        { "id": "api-003", "desc": "POST /api/contact returns 400 with invalid email", "status": "GREEN", "verified_at": "2026-03-07" },
+        { "id": "api-004", "desc": "POST /api/contact returns 429 after 5 requests/min", "status": "GREEN", "verified_at": "2026-03-07" },
+        { "id": "api-005", "desc": "GET /api/reviews returns 200 with fallback reviews", "status": "GREEN", "verified_at": "2026-03-07" },
+        { "id": "api-006", "desc": "GET /api/reviews sanitizes HTML injection in input", "status": "GREEN", "verified_at": "2026-03-07" }
+      ]
+    },
+    {
+      "name": "OWASP",
+      "tests": [
+        { "id": "owasp-001", "desc": "No dangerouslySetInnerHTML on user input", "status": "GREEN", "verified_at": "2026-03-07" },
+        { "id": "owasp-002", "desc": "Contact form strips HTML special chars", "status": "GREEN", "verified_at": "2026-03-07" },
+        { "id": "owasp-003", "desc": "All user input has max length limits", "status": "GREEN", "verified_at": "2026-03-07" },
+        { "id": "owasp-004", "desc": "No secrets in any source file", "status": "GREEN", "verified_at": "2026-03-07" },
+        { "id": "owasp-005", "desc": "/api/ routes disallowed in robots.txt", "status": "GREEN", "verified_at": "2026-03-07" }
+      ]
+    },
+    {
+      "name": "SEO",
+      "tests": [
+        { "id": "seo-001", "desc": "All 14 pages have unique title metadata", "status": "GREEN", "verified_at": "2026-03-07" },
+        { "id": "seo-002", "desc": "All 14 pages have meta description under 160 chars", "status": "GREEN", "verified_at": "2026-03-07" },
+        { "id": "seo-003", "desc": "sitemap.xml lists all 14 pages", "status": "GREEN", "verified_at": "2026-03-07" },
+        { "id": "seo-004", "desc": "robots.txt serves correctly", "status": "GREEN", "verified_at": "2026-03-07" },
+        { "id": "seo-005", "desc": "Schema.org RoofingContractor JSON-LD in root layout", "status": "GREEN", "verified_at": "2026-03-07" }
+      ]
+    },
+    {
+      "name": "Assets",
+      "tests": [
+        { "id": "assets-001", "desc": "All 6 hero images present in /assets/hero/", "status": "GREEN", "verified_at": "2026-03-07" },
+        { "id": "assets-002", "desc": "All 10 gallery images present in /assets/gallery/", "status": "GREEN", "verified_at": "2026-03-07" },
+        { "id": "assets-003", "desc": "Founder portrait present in /assets/about/", "status": "GREEN", "verified_at": "2026-03-07" },
+        { "id": "assets-004", "desc": "Service thumbnails present in /assets/services/", "status": "GREEN", "verified_at": "2026-03-07" }
+      ]
+    },
+    {
+      "name": "QA — pending",
+      "tests": [
+        { "id": "qa-001", "desc": "Lighthouse score 90+ on homepage", "status": "PENDING" },
+        { "id": "qa-002", "desc": "Mobile layout verified at 375px", "status": "PENDING" },
+        { "id": "qa-003", "desc": "Mobile layout verified at 768px", "status": "PENDING" },
+        { "id": "qa-004", "desc": "Desktop layout verified at 1280px", "status": "PENDING" },
+        { "id": "qa-005", "desc": "Zero browser console errors", "status": "PENDING" },
+        { "id": "qa-006", "desc": "Contact form submits and shows success state", "status": "PENDING" },
+        { "id": "qa-007", "desc": "Gallery lightbox opens and navigates", "status": "PENDING" },
+        { "id": "qa-008", "desc": "Cal.com booking link opens correctly", "status": "PENDING" },
+        { "id": "qa-009", "desc": "ReviewsCarousel renders fallback reviews", "status": "PENDING" },
+        { "id": "qa-010", "desc": "StickyCallBar visible on mobile, hidden on desktop", "status": "PENDING" }
+      ]
+    }
+  ]
+}

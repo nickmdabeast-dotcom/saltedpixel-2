@@ -1,0 +1,41 @@
+{
+  "status": "complete",
+  "source_note": "MCP tools (mcp__magic-ui, mcp__21st-dev-magic) were permission-denied at runtime. All components written manually per fallback spec.",
+  "components": {
+    "NumberTicker": {
+      "path": "components/magic/NumberTicker.tsx",
+      "source": "manual",
+      "description": "Animates any positive integer from 0 to target value on scroll-into-view. Used for TrustStrip/StatsBar stats: 2300 roofs, 340 reviews, 14 years.",
+      "deps": ["react-intersection-observer"],
+      "usage": "<NumberTicker value={2300} duration={2000} className=\"text-5xl font-bold text-[#D4A853]\" />"
+    },
+    "BlurFade": {
+      "path": "components/magic/BlurFade.tsx",
+      "source": "manual",
+      "description": "Blur + fade + slide-up reveal on scroll into view via framer-motion whileInView. Wrap each major page section.",
+      "deps": ["framer-motion"],
+      "usage": "<BlurFade delay={0.1}><Section /></BlurFade>"
+    },
+    "AnimatedShimmer": {
+      "path": "components/magic/AnimatedShimmer.tsx",
+      "source": "manual",
+      "description": "Shimmer sweep overlay for hero accent elements (badges, gold text). No external deps — CSS keyframe only. Also exports GradientBorderCard for service cards.",
+      "deps": [],
+      "exports": ["AnimatedShimmer", "GradientBorderCard"],
+      "usage": "<AnimatedShimmer><span className=\"text-[#D4A853]\">Owens Corning Platinum</span></AnimatedShimmer>"
+    },
+    "TestimonialCard": {
+      "path": "components/magic/TestimonialCard.tsx",
+      "source": "manual",
+      "description": "Review card with 1–5 star display, reviewer initials avatar (fallback if no photo), name, location, review text, and Google Reviews badge. Brand-matched dark card.",
+      "deps": [],
+      "usage": "<TestimonialCard name=\"Sarah M.\" location=\"Cedar Park, TX\" rating={5} text=\"Ironclad replaced our roof after the May hailstorm...\" />"
+    }
+  },
+  "install_command": "npm install react-intersection-observer framer-motion",
+  "brand_tokens": {
+    "bg": "#1C1C1E",
+    "gold": "#D4A853",
+    "offwhite": "#F5F5F0"
+  }
+}

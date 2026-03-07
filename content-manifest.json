@@ -1,0 +1,33 @@
+{
+  "generated_by": "content-agent",
+  "generated_at": "2026-03-07",
+  "business": {
+    "name": "Ironclad Roofing Co.",
+    "phone": "(512) 000-0000",
+    "email": "hello@ironcladroofingco.com",
+    "address": "Austin, TX",
+    "license": "ROC #TX-448821",
+    "certifications": ["Owens Corning Platinum Preferred"],
+    "years_in_business": 14,
+    "roofs_completed": 2300,
+    "review_rating": 4.9,
+    "review_count": 340,
+    "warranty": "Lifetime workmanship warranty",
+    "domain": "https://ironcladroofingco.com"
+  },
+  "service_areas": ["Austin", "Cedar Park", "Round Rock", "Pflugerville", "Bee Cave", "Georgetown"],
+  "services": [
+    { "slug": "storm-damage", "title": "Storm Damage", "urgency": "high" },
+    { "slug": "roof-replacement", "title": "Roof Replacement", "urgency": "normal" },
+    { "slug": "roof-repair", "title": "Roof Repair", "urgency": "normal" },
+    { "slug": "commercial-roofing", "title": "Commercial Roofing", "urgency": "normal" }
+  ],
+  "trust_signals": [
+    "14 years in business",
+    "2,300+ roofs completed",
+    "Owens Corning Platinum Preferred",
+    "4.9 stars / 340+ Google reviews",
+    "Licensed & insured — ROC #TX-448821",
+    "Lifetime workmanship warranty"
+  ]
+}
